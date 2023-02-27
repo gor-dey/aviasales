@@ -1,0 +1,24 @@
+body {
+  margin: 0 auto;
+  background-color: #e5e5e5;
+  max-width: 960px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.cards__options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 502px;
+}
+
+.cards__options * {
+    background-color: #42A5F5;
+    height: 50px;
+    
+    border: #DFE5EC solid 1px
+}
