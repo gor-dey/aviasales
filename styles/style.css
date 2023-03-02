@@ -1,24 +1,270 @@
 body {
   margin: 0 auto;
   background-color: #e5e5e5;
-  max-width: 960px;
+  max-width: 754px;
+
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 header {
   display: flex;
   justify-content: center;
+  padding: 25px 0;
+}
+header * * {
+  box-shadow: 0 0 5px #979797;
+}
+@keyframes header-logo {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+header *:hover {
+  animation: header-logo 1s infinite;
+  transition: all 1.5s linear 0s;
+  transition: box-shadow none;
+}
+
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  font-weight: 400;
+}
+
+.transfers {
+  width: 232px;
+  height: 252px;
+  /* border: 1px solid #4a4a4a; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  background-color: #fff;
+
+  box-shadow: 0 0 5px #979797;
+}
+
+.transfers input {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.transfers__var {
+  display: flex;
+  gap: 10px;
+}
+
+.transfers *:hover {
+  transition: all 0.3s ease 0s;
+  transform: scale(1.1) translateX(10px);
+  font-weight: 500;
+}
+
+.transfers :first-child {
+  font-weight: 500;
+  transition: none;
+  transform: none;
+}
+
+.cards {
+  width: 502px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .cards__options {
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 502px;
+  height: 50px;
+
+  border-radius: 5px;
+  box-shadow: 0 0 5px #979797;
 }
 
 .cards__options * {
-    background-color: #42A5F5;
-    height: 50px;
-    
-    border: #DFE5EC solid 1px
+  max-width: 33.333%;
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.cards__options *:hover {
+  background-color: #42a5f5;
+  color: #fff;
+  box-shadow: 4px 4px 5px #979797;
+
+  border-radius: 5px;
+  border: solid 1px #dfe5ec;
+
+  transition: all 0.3s ease 0s;
+  transform: scale(1.1);
+  
+  font-weight: 700;
+}
+
+.cards__options :nth-child(2) {
+  border-left: #dfe5ec 1px solid;
+  border-right: #dfe5ec 1px solid;
+}
+
+.cards__top-space {
+  height: 20px;
+}
+#cards__place {
+  margin-top: -20px;
+}
+
+.cards__card {
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 215px;
+  
+  display: grid;
+  
+  grid-template-areas:
+  "price price logo"
+  "price price logo"
+  "taero tstat txtm"
+  "tstrt troad txaer"
+  "baero bstat bxtm"
+  "bstrt broad bxaer"
+  "space space info";
+  
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 15px);
+  
+  gap: 10px;
+
+  border-radius: 5px;
+
+  box-shadow: 0 0 5px #979797;
+}
+
+.cards__card :nth-child(2n-1) {
+  color: #979797;
+}
+.cards__card :nth-child(2n) {
+  font-weight: 500;
+  margin-top: -5px;
+}
+
+/* 1st row */
+.cards__price {
+  grid-area: price;
+
+  color: #42a5f5 !important;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.cards__logo {
+  grid-area: logo;
+
+  margin-left: auto;
+}
+/* 2nd row */
+.cards__there--aeroports {
+  grid-area: taero;
+}
+.cards__there--status {
+  grid-area: tstat;
+}
+.cards__there--cross-time {
+  grid-area: txtm;
+}
+/* 3th row */
+.cards__there--time-start {
+  grid-area: tstrt;
+}
+.cards__there--time-on-road {
+  grid-area: troad;
+}
+.cards__there--cross-aeroports {
+  grid-area: txaer;
+}
+/* 4th row */
+.cards__back--aeroports {
+  grid-area: baero;
+}
+.cards__back--status {
+  grid-area: bstat;
+}
+.cards__back--cross-time {
+  grid-area: bxtm;
+}
+/* 5th row */
+.cards__back--time-start {
+  grid-area: bstrt;
+}
+.cards__back--time-on-road {
+  grid-area: broad;
+}
+.cards__back--cross-aeroports {
+  grid-area: bxaer;
+}
+.cards__more-info {
+  grid-area: info;
+
+  display: inline;
+  width: 110px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #979797;
+
+  background-color: #42a5f5;
+  color: #fff !important;
+}
+
+@keyframes more-info-hover {
+  from {
+    background: steelblue;
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+.cards__more-info:hover {
+  transition: all 0.7s ease-in-out 0s;
+  animation: more-info-hover 0.3s infinite alternate;
+  background-color: yellowgreen;
+  font-weight: 700;
+  border: 1px solid #dfe5ec;
+  box-shadow: 10px 10px 5px #979797;
+}
+
+.cards__also-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #42a5f5;
+  color: #fff;
+
+  border-radius: 5px;
+  box-shadow: 0 0 5px #979797;
+
+  font-weight: 400;
+}
+
+.cards__also-show:hover {
+  box-shadow: 4px 4px 5px #979797;
+
+  border-radius: 5px;
+  border: solid 1px #dfe5ec;
+
+  transition: all 0.3s ease 0s;
+  transform: scale(1.1);
+
+  font-weight: 700;
+}
+
