@@ -16,54 +16,32 @@
   </head>
   <body>
     <header>
-      <img class="header-logo" src="./img/avia.svg" alt="logo-avia" />
+      <img class="header-logo" src="./styles/img/avia.svg" alt="logo-avia" />
     </header>
 
     <main>
       <div class="cards">
         <div class="cards__options">
-          <div class="cards__option" id="cards__chep">САМЫЙ ДЕШЕВЫЙ</div>
-          <div class="cards__option" id="cards__fast">САМЫЙ БЫСТРЫЙ</div>
-          <div class="cards__option" id="cards__optimal">ОПТИМАЛЬНЫЙ</div>
+          <button class="cards__option" id="cards__chep">САМЫЙ ДЕШЕВЫЙ</button>
+          <button class="cards__option" id="cards__fast">САМЫЙ БЫСТРЫЙ</button>
+          <button class="cards__option" id="cards__optimal">ОПТИМАЛЬНЫЙ</button>
         </div>
-        
-        <div id="cards__place"></div>
-        <template id="cards__template">
-          <div class="cards__top-space"></div>
-            <!-- card -->
-          <div class="cards__card">
-            <div class="cards__price">13 400 Р</div>
-            <div class="cards__logo">
-              <img src="./img/s7-logo.svg" alt="logo-s7" />
-            </div>
-            <!-- there -->
-            <div class="cards__there--aeroports">MOW - HTK</div>
-            <div class="cards__there--time-start">10:45 - 08:00</div>
-            <div class="cards__there--status">В ПУТИ</div>
-            <div class="cards__there--time-on-road">21ч 15м</div>
-            <div class="cards__there--cross-time">2 пересадки</div>
-          <div class="cards__there--cross-aeroports">HG, JNB</div>
-          <!-- back -->
-          <div class="cards__back--aeroports">MOW - HTK</div>
-          <div class="cards__back--time-start">10:45 - 08:00</div>
-          <div class="cards__back--status">В ПУТИ</div>
-          <div class="cards__back--time-on-road">21ч 15м</div>
-          <div class="cards__back--cross-time">2 пересадки</div>
-          <div class="cards__back--cross-aeroports">HG, JNB</div>
-          <div class="cards__more-info">Подробнее...</div>
+
+        <div id="cards__layout">
+          <!-- connection with script -->
         </div>
-      </template>
-        
-        <div class="cards__also-show"><span>Показать еще 5 билетов!</span></div>
+        <button class="cards__also-show">
+          <span>Показать еще 5 билетов!</span>
+        </button>
       </div>
-      
+
       <aside>
         <div class="transfers">
           <div class="transfers__head">Колличество пересадок</div>
           <div class="transfers__var">
             <input id="transfers__all" type="checkbox" /><label
-            for="transfers__all"
-            >Все</label
+              for="transfers__all"
+              >Все</label
             >
           </div>
           <div class="transfers__var">
@@ -90,7 +68,10 @@
         </div>
       </aside>
     </main>
+    <script>
+      const header = document.querySelector(".header-logo");
+      header.classList.add("js-loading");
+    </script>
     <script type="module" src="./script/script.js"></script>
-    <!-- <script src="./script/logic.js"></script> -->
   </body>
 </html>

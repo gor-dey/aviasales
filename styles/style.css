@@ -1,8 +1,9 @@
 body {
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   background-color: #e5e5e5;
   max-width: 754px;
 
+  /* ! its have to be font 'Open Sans' */
   font-family: "Roboto", "Arial", sans-serif;
 }
 
@@ -11,20 +12,29 @@ header {
   justify-content: center;
   padding: 25px 0;
 }
-header * * {
-  box-shadow: 0 0 5px #979797;
-}
-@keyframes header-logo {
+@keyframes js-loading {
   from {
   }
   to {
     transform: rotate(360deg);
   }
 }
-header *:hover {
-  animation: header-logo 1s infinite;
+header *.js-loading {
+  animation: js-loading 1s infinite;
   transition: all 1.5s linear 0s;
-  transition: box-shadow none;
+}
+@keyframes header-hover {
+  from {
+    left: 100%;
+  }
+  to {
+    right: 100%;
+    margin-left: 0.5rem;
+  }
+}
+header *:hover {
+  animation: header-hover 0.1s alternate;
+  transition: all 1.5s linear 0s;
 }
 
 main {
@@ -107,7 +117,7 @@ main {
 
   transition: all 0.3s ease 0s;
   transform: scale(1.1);
-  
+
   font-weight: 700;
 }
 
@@ -128,21 +138,21 @@ main {
   padding: 20px;
   box-sizing: border-box;
   height: 215px;
-  
+
   display: grid;
-  
+
   grid-template-areas:
-  "price price logo"
-  "price price logo"
-  "taero tstat txtm"
-  "tstrt troad txaer"
-  "baero bstat bxtm"
-  "bstrt broad bxaer"
-  "space space info";
-  
+    "price price logo"
+    "price price logo"
+    "taero tstat txtm"
+    "tstrt troad txaer"
+    "baero bstat bxtm"
+    "bstrt broad bxaer"
+    "space space info";
+
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(6, 15px);
-  
+
   gap: 10px;
 
   border-radius: 5px;
@@ -223,7 +233,6 @@ main {
   background-color: #42a5f5;
   color: #fff !important;
 }
-
 @keyframes more-info-hover {
   from {
     background: steelblue;
@@ -267,4 +276,35 @@ main {
 
   font-weight: 700;
 }
+.js-more-inf-parent {
+  transition: all 0.7s ease 0s;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80%;
 
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+
+  gap: 0.5vw;
+
+  font-size: 2.5vw;
+  padding: 3vw;
+
+  border-radius: 2vw;
+  border: 3vw #FFFDD0 double;
+
+  box-shadow: 2vw 2vw 2vw #979797 ;
+}
+.js-more-inf-parent button {
+  width: auto;
+}
+.js-more-inf-parent .cards__price {
+  font-size: 5vw;
+  font-weight: 700;
+}
+.js-more-inf-body {
+  overflow: hidden;
+}

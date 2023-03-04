@@ -1,13 +1,5 @@
+import { cardRender } from "./functions/cardRender.js";
 import { toTicketApi } from "./toTicketApi.js";
-
-const cards = document.querySelector("#cards__place");
-
-const template = document.querySelector("#cards__template");
-const cardPrice = template.content.querySelector(".cards__price");
-
-// const qwe = document.querySelector(".123");
-// const qwe = document.querySelector(".123");
-// const qwe = document.querySelector(".123");
 
 export async function mainScript() {
   const apiReq = await fetch("https://aviasales-test-api.kata.academy/search")
@@ -24,20 +16,11 @@ export async function mainScript() {
     })
 
     .then((a) => {
-      const priceArray = a.tickets.map((element) => {
-        return element.price + " " + JSON.stringify(element);
-      });
+      const priceArraySort = a.tickets.sort((a, b) => a.price - b.price);
 
-      const priseArraySplit = priceArray.sort().map((element) => {
-        return element.split(" ").slice(1);
-      });
-
-      const firstFive = priseArraySplit.slice(0, 5).forEach((element) => {
-        cardPrice.textContent = JSON.parse(element[0]).price;
-        const card = template.content.cloneNode(true);
-        cards.append(card);
-
-        return console.log(JSON.parse(element[0]).price);
+      priceArraySort.slice(0, 5).forEach((element, index) => {
+        cardRender(element, index);
+        document.querySelector(".header-logo").classList.remove("js-loading");
       });
     });
 }
