@@ -38,12 +38,19 @@ export const cardRender = function (element, index) {
   );
 
   // pushing content to card
-  cardPrice.textContent = `${element.price} Р`;
+  cardPrice.textContent = `${element.price} ₽`;
   cardLogo.textContent = element.carrier;
   // there
   cardTAero.textContent = `${element.segments[0].origin} - ${element.segments[0].destination}`;
-  // cardTTStart.textContent =  element.segments[0].date;
-  cardTTStart.textContent = "ВРЕМЯ";
+
+  const timeThereStars = element.segments[0].date;
+  const timeThereFinish =
+    Math.floor(Date.now(element.segments[0].date) / 1000) +
+    (element.segments[0].duration)*60;
+  const timeToView = `${(new Date(timeThereStars).getUTCHours()).toString().padStart(2,0)}:${(new Date(timeThereStars).getUTCMinutes()).toString().padStart(2,0)}`;
+  const timeToFinView = `${new Date(timeThereFinish).getUTCHours()}:${new Date(timeThereFinish).getUTCMinutes()}`;
+  cardTTStart.textContent = `${timeToView} - ${timeToFinView}`;
+  
   cardTCrossT.textContent = `Пересадок: ${element.segments[0].stops.length}`;
   if (element.segments[0].stops.length == 1) {
     cardTCrossAero.textContent = `${element.segments[0].stops[0]}`;
@@ -62,6 +69,15 @@ export const cardRender = function (element, index) {
 
   // back
   cardBAero.textContent = `${element.segments[1].origin} - ${element.segments[1].destination}`;
+
+  const timeBackStars = element.segments[1].date;
+  const timeBackFinish =
+    Math.floor(Date.now(element.segments[1].date) / 1000) +
+    (element.segments[0].duration)*60;
+  const timeBackView = `${new Date(timeBackStars).getHours()}:${new Date(timeBackStars).getMinutes()}`;
+  const timeBackFinView = `${(new Date(timeBackFinish).getUTCHours()).toString().padStart(2,0)}:${(new Date(timeBackFinish).getUTCMinutes()).toString().padStart(2,0)}`;
+  cardBTStart.textContent = `${timeBackView} - ${timeBackFinView}`;
+
   cardBCrossT.textContent = `Пересадок: ${element.segments[1].stops.length}`;
   if (element.segments[1].stops.length == 1) {
     cardBCrossAero.textContent = `${element.segments[1].stops[0]}`;
