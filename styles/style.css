@@ -336,15 +336,14 @@ main {
 }
 .js-more-inf-parent {
   z-index: 999;
-  
-  /* filter: none; */
+
   animation: 1s js-more-inf-parent;
   background-color: #fff;
   transition: all 0.7s ease 0s;
   position: fixed;
   left: 50%;
   top: 50%;
-  
+
   transform: translate(-50%, -50%);
   width: 85vw;
   height: 85%;
@@ -389,9 +388,33 @@ main {
 .js-more-inf-parent button:hover {
   border: solid 1px #dfe5ec;
   transition: all 0.3s ease 0s;
-  transform: scale(1.1);
+  box-shadow: 9px 9px 5px #979797;
+  transform: scale(1.5);
 }
 .js-more-inf-body {
+  position: absolute; 
+  left: 25%;
   overflow: hidden;
-  /* filter: blur(4px); */
+}
+#js-blur {
+  position: fixed;
+  left: 0;
+  top: 0;
+  filter: alpha(opacity=50);
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+}
+@keyframes js-fade-out {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.js-fade-out {
+  animation: js-fade-out 0.7s ease;
 }

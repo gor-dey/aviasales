@@ -46,12 +46,27 @@ export const cardRender = function (element, index) {
   const timeThereStars = element.segments[0].date;
   const timeThereFinish =
     Math.floor(Date.now(element.segments[0].date) / 1000) +
-    (element.segments[0].duration)*60;
-  const timeToView = `${(new Date(timeThereStars).getUTCHours()).toString().padStart(2,0)}:${(new Date(timeThereStars).getUTCMinutes()).toString().padStart(2,0)}`;
-  const timeToFinView = `${new Date(timeThereFinish).getUTCHours()}:${new Date(timeThereFinish).getUTCMinutes()}`;
+    element.segments[0].duration * 60;
+  const timeToView = `${new Date(timeThereStars)
+    .getUTCHours()
+    .toString()
+    .padStart(2, 0)}:${new Date(timeThereStars)
+    .getUTCMinutes()
+    .toString()
+    .padStart(2, 0)}`;
+  const timeToFinView = `${new Date(timeThereFinish)
+    .getUTCHours()
+    .toString()
+    .padStart(2, 0)}:${new Date(timeThereFinish)
+    .getUTCMinutes()
+    .toString()
+    .padStart(2, 0)}`;
   cardTTStart.textContent = `${timeToView} - ${timeToFinView}`;
-  
+
   cardTCrossT.textContent = `Пересадок: ${element.segments[0].stops.length}`;
+  if (element.segments[0].stops.length == 0) {
+    cardTCrossAero.textContent = ``;
+  }
   if (element.segments[0].stops.length == 1) {
     cardTCrossAero.textContent = `${element.segments[0].stops[0]}`;
   }
@@ -73,9 +88,21 @@ export const cardRender = function (element, index) {
   const timeBackStars = element.segments[1].date;
   const timeBackFinish =
     Math.floor(Date.now(element.segments[1].date) / 1000) +
-    (element.segments[0].duration)*60;
-  const timeBackView = `${new Date(timeBackStars).getHours()}:${new Date(timeBackStars).getMinutes()}`;
-  const timeBackFinView = `${(new Date(timeBackFinish).getUTCHours()).toString().padStart(2,0)}:${(new Date(timeBackFinish).getUTCMinutes()).toString().padStart(2,0)}`;
+    element.segments[0].duration * 60;
+  const timeBackView = `${new Date(timeBackStars)
+    .getHours()
+    .toString()
+    .padStart(2, 0)}:${new Date(timeBackStars)
+    .getMinutes()
+    .toString()
+    .padStart(2, 0)}`;
+  const timeBackFinView = `${new Date(timeBackFinish)
+    .getUTCHours()
+    .toString()
+    .padStart(2, 0)}:${new Date(timeBackFinish)
+    .getUTCMinutes()
+    .toString()
+    .padStart(2, 0)}`;
   cardBTStart.textContent = `${timeBackView} - ${timeBackFinView}`;
 
   cardBCrossT.textContent = `Пересадок: ${element.segments[1].stops.length}`;
