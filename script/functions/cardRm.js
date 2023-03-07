@@ -3,5 +3,6 @@ export function cardRm() {
     return
   } else {
     document.querySelector("#cards__place").remove();
+    return
   }
 }

@@ -17,6 +17,10 @@ export const toTicketApi = async function toTicketApi(searchId) {
       return console.log("Error >>>>> ", err);
     });
 
+
+
+
   window.getTickets = getTickets;
+
   return getTickets;
 };

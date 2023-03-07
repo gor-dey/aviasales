@@ -22,5 +22,14 @@ export async function mainScript() {
         cardRender(element, index);
         document.querySelector(".header-logo").classList.remove("js-loading");
       });
+    })
+    .then((a) => {
+      const currentTickets = getTickets.tickets.map(function callback(
+        element,
+        index
+      ) {
+        return [index + 1, element];
+      });
+      window.currentTickets = currentTickets;
     });
 }

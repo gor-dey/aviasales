@@ -1,4 +1,5 @@
 import { cardRm } from "../functions/cardRm.js";
+import { uncheck } from "./checkUncheck.js";
 const header = document.querySelector(".header-logo");
 
 export async function optimalScript() {
@@ -7,6 +8,7 @@ export async function optimalScript() {
     return;
   }
   async function renderStub() {
+    uncheck();
     header.classList.add("js-loading");
     return;
   }

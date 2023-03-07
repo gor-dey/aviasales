@@ -4,8 +4,7 @@ export const cardRender = function (element, index) {
 
   const cardId = template.content.querySelector("#cards__more-info");
   cardId.className = `cards__more-info`;
-  cardId.classList.add(`index-is-${index+1}`);
-
+  cardId.classList.add(`index-is-${index + 1}`);
 
   const cardPrice = template.content.querySelector(".cards__price");
   const cardLogo = template.content.querySelector(".cards__logo");
