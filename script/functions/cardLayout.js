@@ -1,7 +1,6 @@
 export function cardLayout() {
-  document.querySelector("#cards__layout").innerHTML;
-
-  document.querySelector("#cards__layout").innerHTML = `
+  //innerHTML норм. НО я хочу чтобы ты держал у себя в голове что он может быть небезопасным если мы принимаем user input в нём
+document.querySelector("#cards__layout").innerHTML = `
 <div id="cards__place">
 <template id="cards__template">
   <div class="cards__top-space"></div>

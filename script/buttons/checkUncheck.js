@@ -3,9 +3,10 @@ const checkboxNo = document.querySelector(`#transfers__no`);
 const checkbox1 = document.querySelector(`#transfers__1`);
 const checkbox2 = document.querySelector(`#transfers__2`);
 const checkbox3 = document.querySelector(`#transfers__3`);
-
+//делаем функцию checkUncheck(check/uncheck, target) и циклом решаем чекать-анчекать. Не страшно тут, но создаёшь кучу сущностей
 function checkUncheck() {
   if (event.target == checkboxAll && checkboxAll.checked == true) {
+    
     checkboxNo.checked = false;
     checkbox1.checked = false;
     checkbox2.checked = false;

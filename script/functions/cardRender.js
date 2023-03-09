@@ -1,4 +1,5 @@
 export const cardRender = function (element, index) {
+  //очень много похожих переменных и глаза периодически разбегаются
   const cards = document.querySelector("#cards__place");
   const template = document.querySelector("#cards__template");
 
@@ -43,40 +44,26 @@ export const cardRender = function (element, index) {
   // there
   cardTAero.textContent = `${element.segments[0].origin} - ${element.segments[0].destination}`;
 
-  const timeThereStars = element.segments[0].date;
-  const timeThereFinish =
-    Math.floor(Date.now(element.segments[0].date) / 1000) +
-    element.segments[0].duration * 60;
-  const timeToView = `${new Date(timeThereStars)
-    .getUTCHours()
-    .toString()
-    .padStart(2, 0)}:${new Date(timeThereStars)
-    .getUTCMinutes()
-    .toString()
-    .padStart(2, 0)}`;
-  const timeToFinView = `${new Date(timeThereFinish)
-    .getUTCHours()
-    .toString()
-    .padStart(2, 0)}:${new Date(timeThereFinish)
-    .getUTCMinutes()
-    .toString()
-    .padStart(2, 0)}`;
-  cardTTStart.textContent = `${timeToView} - ${timeToFinView}`;
+  // destination 0 если туда 1 если обратно
+
+  const timeConverter = (destination) => {
+    const timeThereStars = element.segments[destination].date;
+    const timeThereFinish = Math.floor(Date.now(element.segments[destination].date) / 1000) + 
+    element.segments[destination].duration * 60;
+    const timeStringifying = (time) => `${new Date(time)
+        .getUTCHours()
+        .toString()
+        .padStart(2, 0)}:${new Date(time)
+        .getUTCMinutes()
+        .toString()
+        .padStart(2, 0)}`
+    return `${timeStringifying(timeThereStars)} - ${timeStringifying(timeThereFinish)}`
+  }
+
+  cardTTStart.textContent = timeConverter(0)
 
   cardTCrossT.textContent = `Пересадок: ${element.segments[0].stops.length}`;
-  if (element.segments[0].stops.length == 0) {
-    cardTCrossAero.textContent = ``;
-  }
-  if (element.segments[0].stops.length == 1) {
-    cardTCrossAero.textContent = `${element.segments[0].stops[0]}`;
-  }
-  if (element.segments[0].stops.length == 2) {
-    cardTCrossAero.textContent = `${element.segments[0].stops[0]}, ${element.segments[0].stops[1]}`;
-  }
-  if (element.segments[0].stops.length == 3) {
-    cardTCrossAero.textContent = `${element.segments[0].stops[0]}, ${element.segments[0].stops[1]}, ${element.segments[0].stops[2]}`;
-  }
-  cardTCrossT.textContent = `Пересадок: ${element.segments[0].stops.length}`;
+  cardTCrossAero.textContent = element.segments[0].stops.length ? element.segments[0].stops.join(", ") : ""
 
   cardTTonRoad.textContent = `${Math.trunc(
     element.segments[0].duration / 60
@@ -85,37 +72,10 @@ export const cardRender = function (element, index) {
   // back
   cardBAero.textContent = `${element.segments[1].origin} - ${element.segments[1].destination}`;
 
-  const timeBackStars = element.segments[1].date;
-  const timeBackFinish =
-    Math.floor(Date.now(element.segments[1].date) / 1000) +
-    element.segments[0].duration * 60;
-  const timeBackView = `${new Date(timeBackStars)
-    .getHours()
-    .toString()
-    .padStart(2, 0)}:${new Date(timeBackStars)
-    .getMinutes()
-    .toString()
-    .padStart(2, 0)}`;
-  const timeBackFinView = `${new Date(timeBackFinish)
-    .getUTCHours()
-    .toString()
-    .padStart(2, 0)}:${new Date(timeBackFinish)
-    .getUTCMinutes()
-    .toString()
-    .padStart(2, 0)}`;
-  cardBTStart.textContent = `${timeBackView} - ${timeBackFinView}`;
+  cardBTStart.textContent = timeConverter(1);
 
   cardBCrossT.textContent = `Пересадок: ${element.segments[1].stops.length}`;
-  if (element.segments[1].stops.length == 1) {
-    cardBCrossAero.textContent = `${element.segments[1].stops[0]}`;
-  }
-  if (element.segments[1].stops.length == 2) {
-    cardBCrossAero.textContent = `${element.segments[1].stops[0]}, ${element.segments[1].stops[1]}`;
-  }
-  if (element.segments[1].stops.length == 3) {
-    cardBCrossAero.textContent = `${element.segments[1].stops[0]}, ${element.segments[1].stops[1]}, ${element.segments[1].stops[2]}`;
-  }
-  cardBCrossT.textContent = `Пересадок: ${element.segments[1].stops.length}`;
+  cardBCrossAero.textContent = element.segments[1].stops.length ? element.segments[1].stops.join(", ") : ""
 
   cardBTonRoad.textContent = `${Math.trunc(
     element.segments[1].duration / 60

@@ -16,6 +16,7 @@ export function chepScript() {
   window.currentTickets = currentTickets;
 
   const cardLayouQueue = async function cardLayouQueue() {
+    //зачем нам await вот этих ребят внизу если они итак выполняются последовательно?
     await cardRm();
     await cardLayout();
     await data.tickets.slice(0, 5).forEach((element, index) => {

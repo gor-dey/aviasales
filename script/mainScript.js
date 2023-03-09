@@ -5,16 +5,14 @@ export async function mainScript() {
   const apiReq = await fetch("https://aviasales-test-api.kata.academy/search")
     .catch((err) => {
       console.log("Error on Search-IP >>>>>", err);
+      //console.log/console.warn
     })
-    .then((response) => {
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       const searchId = data.searchId;
       const res = toTicketApi(searchId);
       return res;
     })
-
     .then((a) => {
       const priceArraySort = a.tickets.sort((a, b) => a.price - b.price);
 
@@ -23,7 +21,8 @@ export async function mainScript() {
         document.querySelector(".header-logo").classList.remove("js-loading");
       });
     })
-    .then((a) => {
+    .then(() => {
+      //у нас в прошлом then ничего не возвращается, соответственно в "a" ничего не передаётся
       const currentTickets = getTickets.tickets.map(function callback(
         element,
         index

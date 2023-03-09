@@ -3,8 +3,10 @@ import { uncheck } from "./checkUncheck.js";
 const header = document.querySelector(".header-logo");
 
 export async function optimalScript() {
+
+  //я запутался в том зачем нам все async и пустые return
   async function cardLayoutRm() {
-    await cardRm;
+    await cardRm; 
     return;
   }
   async function renderStub() {
@@ -38,6 +40,7 @@ export async function optimalScript() {
     return;
   }
   async function notOptimalHahaha() {
+    //то есть сначала ты делаешь функции внизу(которые объявлены наверху) асинхронными но потом говоришь что они должны выполняться синхронно? 400 iq
     const a = await cardLayoutRm();
     const b = await renderStub();
     const c = await renderResult();

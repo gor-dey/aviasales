@@ -15,6 +15,7 @@ export const toTicketApi = async function toTicketApi(searchId) {
       headerParrent.insertBefore(pleasReload, header);
 
       return console.log("Error >>>>> ", err);
+      //console.error, console.warn
     });
 
 
