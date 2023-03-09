@@ -26,6 +26,7 @@ function b() {
       cardRender(element[1], element[0]);
     });
   } else {
+    //циклом можно в четыре раза сократить кол-во строк
     checkboxArray0123 = [];
     checkboxArray.forEach((element) => {
       if (element == "transfers__no") {
@@ -71,6 +72,8 @@ function d() {
 }
 
 function checkboxes() {
+  //хуяк-хуяк-хуяк-хуяк-хуяк-хуяк
+  //нам нужно столько разных функций учитывая что они все выполняются последовательно?
   a();
   cardRm();
   cardLayout();

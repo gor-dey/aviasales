@@ -17,6 +17,7 @@ export function fastScript() {
   window.currentTickets = currentTickets;
 
   const cardLayouQueue = async function cardLayouQueue() {
+    //функции внизу итак не асинхронные, зачем их await?
     await cardRm();
     await cardLayout();
     await fastArraySort.slice(0, 5).forEach((element, index) => {
